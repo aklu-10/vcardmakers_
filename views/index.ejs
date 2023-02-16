@@ -1,0 +1,29 @@
+<%-include("./partials/header.ejs")%>
+
+<div class="register container">
+    <img class="coverImg" src="images/bg.jpg" />
+    <div class="wrapper">
+      <h1>Register!</h1>
+      <p>Explore More by <br/> connecting with us</p>
+      <div class="imageContainer">
+        <img src="images/profile.jpg" alt=""/>
+      </div>
+      <form action="api/registerUser" method="post">
+        <input type="text" placeholder="First Name" name="firstname" required/>
+        <input type="text" placeholder="Last Name" name="lastname" required/>
+        <input type="email" placeholder="Email" name="email" required/>
+        <input type="text" minlength="10" placeholder="Mobile Number" name="mobile" required/>
+        <input type="password" placeholder="Password" name="password" required/>
+        <input type="password" placeholder="Confirm password"required/>
+        <button type='submit'>Let's Go</button>
+      </form>
+      <div class="caption">
+        <p>Alreadt a Member ?
+        <a href="/loginUser"> Login here</a>
+        </p>
+      </div>
+    </div>
+</div>
+
+<%-include("./partials/footer.ejs")%>
+    

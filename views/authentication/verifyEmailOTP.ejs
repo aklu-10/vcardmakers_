@@ -1,0 +1,21 @@
+<%-include("../partials/header.ejs")%>
+
+<div class="register container">
+    <img class="coverImg" src="images/bg.jpg" />
+    <div class="wrapper">
+      <h1>Verify OTP!</h1>
+      <p>otp sent to <strong> <%=email%> </strong> </p>
+      <form action="api/verifyEmailOTP" method="post">
+        <input type="text" placeholder="Enter 6-digit OTP" name="emailOtp" value="<%=email%>" required/>
+        <button type='submit'>Verify</button>
+      </form>
+      <div class="caption">
+        <p>Did'nt received otp ?
+        <a href="/api/sendEmailOTP"> resend </a>
+        </p>
+      </div>
+    </div>
+</div>
+
+
+<%-include("../partials/footer.ejs")%>

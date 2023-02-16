@@ -1,0 +1,25 @@
+<%-include("../partials/header.ejs")%>
+
+<div class="login container">
+    <img class="coverImg" src="images/bg.jpg" />
+    <div class="wrapper">
+      <h1>Login!</h1>
+      <p>We love to join you
+      <div class="imageContainer">
+        <img src="images/profile.jpg" alt=""/>
+      </div>
+      <form action="api/loginUser" method="post">
+        <input type="email" placeholder="Email" name="email" required/>
+        <input type="password" placeholder="Password" name="password" required/>
+        <button type='submit'>Let's Go</button>
+      </form>
+      <div class="caption">
+        <p>Not a Member ?
+        <a href="/registerUser"> Register here</a>
+        </p>
+      </div>
+    </div>
+</div>
+
+<%-include("../partials/footer.ejs")%>
+    
