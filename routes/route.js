@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const verifyUser = require('../middleware/verifyUser.js');
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
-
+let random = 1;
 
 router.post('/registerUser', async function (req, res)
 {   
@@ -13,11 +13,15 @@ router.post('/registerUser', async function (req, res)
     let result = await userModel(req.body);
     
     const token = await result.generateAuthToken();
+    
     result.save();
 
     res.cookie("mobile", mobile);  
     res.cookie("email", email);  
-    res.cookie("jwt", token);
+    res.cookie("jwt", token,{
+        expires:new Date(Date.now() + 3.1536E+10),
+        httpOnly:true
+    });
 
     res.redirect('/api/sendOTP');
 
@@ -46,7 +50,7 @@ router.get('/sendOTP', verifyUser ,async function (req, res)
     res.cookie("otp", rand);
     let sid = process.env.SID;
     let auth_token = process.env.AUTH_TOKEN;
-    let twilio = require('twilio')(side, auth_token);
+    let twilio = require('twilio')(sid, auth_token);
     twilio.messages.create({
             from:process.env.TWILIO_MOBILE,
             to: req.cookies.mobile,
@@ -71,14 +75,14 @@ router.get('/sendEmailOTP', verifyUser , async function (req, res)
     service: 'gmail',
     host: 'smtp.gmail.com',
     auth: {
-        user: 'somerealemail@gmail.com',
-        pass: 'realpasswordforaboveaccount'
+        user: 'respectwhodeserves@gmail.com',
+        pass: 'dhruopzdxtiropme'
     }
     }));
 
     var mailOptions = {
-    from: 'somerealemail@gmail.com',
-    to: 'friendsgmailacc@gmail.com',
+    from: 'respectwhodeserves@gmail.com',
+    to: 'domyworkakash@gmail.com',
     subject: `your 6-digit otp is ${rand}`,
     text: 'That was easy!'
     };
@@ -102,6 +106,7 @@ router.post('/verifyMobileOTP', verifyUser , function(req, res)
     
     if(otp === req.cookies.otp)
     {
+        res.cookie("otp",0);
         res.redirect("/verifyEmailOTP");
     }
     else
@@ -116,12 +121,24 @@ router.post('/verifyEmailOTP', verifyUser ,function(req, res)
 
     if(otp === req.cookies.eotp)
     {
+        res.cookie("eotp",0);
         res.redirect("/loginUser");
     }
     else
     {
         res.redirect("/verifyEmailOTP");
     }
+})
+
+
+router.get('/editor/newvcard', verifyUser ,async function(req,res)
+{
+
+    let hashId = await bcrypt.hash(`newhash-${random}`,12);
+    random++;
+    
+    res.redirect(`/editor/newvcard/${encodeURIComponent(hashId)}`);
+
 })
 
 

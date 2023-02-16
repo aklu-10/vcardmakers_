@@ -6,7 +6,7 @@
       <h1>Verify OTP!</h1>
       <p>otp sent to <strong> <%=email%> </strong> </p>
       <form action="api/verifyEmailOTP" method="post">
-        <input type="text" placeholder="Enter 6-digit OTP" name="emailOtp" value="<%=email%>" required/>
+        <input type="text" placeholder="Enter 6-digit OTP" name="emailOtp" required/>
         <button type='submit'>Verify</button>
       </form>
       <div class="caption">

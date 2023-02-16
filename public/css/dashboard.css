@@ -1,0 +1,257 @@
+header
+{
+    width:100vw;
+    height:80px;
+    display: flex;   
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 20px;
+    border-bottom:1px solid lightgray;
+}
+
+header a
+{
+    width:20%;
+    text-decoration: none;
+    font-size:1.2rem;
+    font-weight:bold;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+}
+
+header .title
+{
+    width:80%;
+    height:80px;
+    border-left:1px solid lightgray;
+    border-right:1px solid lightgray;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+header .profileContainer
+{
+    width:20%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+header .profileContainer .profile
+{
+    margin-right:10px;
+    width:40px;
+    height:40px;
+    background:lightgray;
+    border-radius:50%;
+
+}
+
+
+header .profileContainer i
+{
+    font-size:1rem;
+}
+
+
+.vcardContainer
+{
+    margin:0 auto;
+    margin-top:8%;
+    width:100vw;
+    min-height:60vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.vcardContainer .vcard_add
+{
+    width:250px;
+    height:350px;
+    border-radius:5px;
+    border:2px dashed lightgray;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:green;
+}
+
+.vcardContainer .vcard_add i
+{
+    font-size:1.5rem;
+    width:50px;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:100;
+    border:1px solid green;
+    border-radius:50%;
+    padding:10px;
+    cursor:pointer; 
+    color:green;
+}
+
+
+.vcardContainer .vcard_add:hover
+{
+    border:2px dashed green;
+
+}
+
+
+.vcardContainer .vcard_item
+{
+    width:250px;
+    height:350px;
+    border-radius:5px;
+    background:green;
+}
+
+
+.newcard_status
+{
+    flex-direction:column;
+    padding:20px;
+} 
+
+.newcard_status p
+{
+    font-size:.9rem;
+    color:gray;
+    text-align:left;
+    padding:0;
+    margin:5px 0;
+}
+
+.newcard_status h2
+{
+    font-size:1.2rem;
+    font-weight:100;
+}
+
+
+.vcard_hero_container
+{
+    width:100vw;
+}
+
+.vcard_hero_container .hero_text
+{
+    border-bottom:2px solid lightgray;;
+}
+
+
+.vcard_hero_container .hero_text h1
+{
+    font-size:1.6rem;
+    text-align:center;
+    margin-top:40px;
+}
+
+.vcard_hero_container .hero_text p
+{
+    color:gray;
+    margin-bottom:20px;
+}
+
+.vcard_hero_container .hero_text .sort_template
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.vcard_hero_container .hero_text .sort_template button
+{
+    padding:6px 20px;
+    font-size:1.2rem;
+    border:none;
+    background:white;
+    color:gray;
+    cursor:pointer;
+}
+
+.vcard_hero_container .hero_text .sort_template button.active
+{
+    border-bottom:4px solid green;
+    border-radius:2px;
+    color:black;
+
+}
+
+.vcard_hero_container .templates_container
+{
+    min-height:max-content;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    background:rgba(0,0,0,.04);
+}
+
+.vcard_hero_container .templates_container .template_item
+{
+    width:300px;
+    height:450px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:20px 40px;
+    border-radius:5px;
+    box-shadow:0 0 5px gray;
+    position:relative;
+    overflow:hidden;
+}
+
+
+
+.vcard_hero_container .templates_container .template_item img
+{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:0 -70px;
+    z-index:-1;
+    transition:.2s ease;
+}
+
+
+.vcard_hero_container .templates_container .template_item:hover img
+{
+    opacity:.75;
+}
+
+
+.vcard_hero_container .templates_container .template_item:hover a
+{
+    display:block;
+}
+
+
+.vcard_hero_container .templates_container .template_item a
+{
+    display:none;
+    background:green;
+    color:white;
+    border:none;
+    padding:8px 20px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:.9rem;
+    letter-spacing:1px;
+}
+
+

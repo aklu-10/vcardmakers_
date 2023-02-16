@@ -1,5 +1,30 @@
 <%- include("../partials/header.ejs")%>
 
-<h2>Dashboard</h2>
+<header>
+
+    <a href="/" class="logo">VCARDMAKERS</a>
+
+    <div class="title">Dashboard</div>
+
+    <div class="profileContainer">
+        <div class="profile"></div>
+        <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+</header>
+
+<div class="vcardContainer">
+
+    <div class="vcard_add">
+        
+        <a href="/api/editor/newvcard">
+            <i class="fa-solid fa-plus"></i>
+        </a>
+        <p>NEW VCARD</p>
+    </div>
+    <div class="vcard_item"></div>
+</div>
+
+
 
 <%- include("../partials/footer.ejs")%>

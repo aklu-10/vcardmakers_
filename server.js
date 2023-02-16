@@ -50,5 +50,12 @@ app.get("/loginUser",(req,res)=>
     res.render("authentication/loginUser");
 })
 
+app.get("/editor/newvcard/:hashId", verifyUser ,(req,res)=>
+{
+    res.render("dashboard/newvcard");
+})
+
+
+
 
 app.listen(PORT,()=>console.log(`listening on port ${PORT}`));

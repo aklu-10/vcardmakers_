@@ -6,7 +6,7 @@
       <h1>Verify OTP!</h1>
       <p>otp sent to <strong> <%=mobile%> </strong> </p>
       <form action="api/verifyMobileOTP" method="post">
-        <input type="text" placeholder="Enter 6-digit OTP" name="mobileOtp" value="<%=mobile%>" required/>
+        <input type="text" placeholder="Enter 6-digit OTP" name="mobileOtp" required/>
         <button type='submit'>Verify</button>
       </form>
       <div class="caption">
