@@ -20,6 +20,11 @@ app.use(cookieParser());
 
 app.use("/api",routes);
 
+app.get("/", verifyUser ,(req,res)=>
+{
+    res.render("dashboard/index");
+})
+
 app.get("/registerUser",(req,res)=>
 {
     res.render("index");

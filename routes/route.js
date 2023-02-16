@@ -2,6 +2,9 @@ const router = require('express').Router();
 const userModel = require('../db/model/userModel.js');
 const bcrypt = require('bcrypt');
 const verifyUser = require('../middleware/verifyUser.js');
+const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
+
 
 router.post('/registerUser', async function (req, res)
 {   
@@ -41,19 +44,19 @@ router.get('/sendOTP', verifyUser ,async function (req, res)
     let rand = Math.floor(Math.random() * (999999 - 100000 ) - 100000) ;
 
     res.cookie("otp", rand);
-    // let sid = process.env.SID;
-    // let auth_token = process.env.AUTH_TOKEN;
-    // let twilio = require('twilio')(side, auth_token);
-    // twilio.messages.create({
-        //     from:process.env.TWILIO_MOBILE,
-        //     to: req.cookies.mobile,
-        //     body:`your otp is ${rand}`
-        // })
+    let sid = process.env.SID;
+    let auth_token = process.env.AUTH_TOKEN;
+    let twilio = require('twilio')(side, auth_token);
+    twilio.messages.create({
+            from:process.env.TWILIO_MOBILE,
+            to: req.cookies.mobile,
+            body:`your otp is ${rand}`
+        })
         
-        // .then((res)=>console.log("message send"))
-        // .catch(err=>console.log(err))
+    .then((res)=>console.log("message send"))
+    .catch(err=>console.log(err))
 
-        res.redirect('/verifyOTP');
+    res.redirect('/verifyOTP');
 })
 
 
@@ -63,20 +66,32 @@ router.get('/sendEmailOTP', verifyUser , async function (req, res)
     let rand = Math.floor(Math.random() * (999999 - 100000 ) - 100000) ;
 
     res.cookie("eotp", rand);
+    
+    var transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+        user: 'somerealemail@gmail.com',
+        pass: 'realpasswordforaboveaccount'
+    }
+    }));
 
-    // let sid = process.env.SID;
-    // let auth_token = process.env.AUTH_TOKEN;
-    // let twilio = require('twilio')(side, auth_token);
-    // twilio.messages.create({
-        //     from:process.env.TWILIO_MOBILE,
-        //     to: req.cookies.mobile,
-        //     body:`your otp is ${rand}`
-        // })
-        
-        // .then((res)=>console.log("message send"))
-        // .catch(err=>console.log(err))
+    var mailOptions = {
+    from: 'somerealemail@gmail.com',
+    to: 'friendsgmailacc@gmail.com',
+    subject: `your 6-digit otp is ${rand}`,
+    text: 'That was easy!'
+    };
 
-        res.redirect('/verifyEmailOTP');
+    transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Email sent: ' + info.response);
+    }
+    });  
+
+    res.redirect('/verifyEmailOTP');
 })
 
 
