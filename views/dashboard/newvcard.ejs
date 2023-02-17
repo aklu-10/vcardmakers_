@@ -11,7 +11,12 @@
 
     <div class="profileContainer">
         <div class="profile"></div>
-        <i class="fa-solid fa-angle-down"></i>
+        <i class="fa-solid fa-angle-down" id="profile_drop_down"></i>
+
+        <div class="profileOptions">
+            <a href="">Settings</a>
+            <a href="">Logout</a>
+        </div>
     </div>
 
 </header>
@@ -33,31 +38,31 @@
 
         <div class="template_item">
             <img src="/images/templates/temp1.jpg" alt="">
-            <a href="">USE THIS TEMPLATE</a>
+            <a href="/editor/newvcard/<%=vid%>/edit/contact-information"><i class="fa-solid fa-pen-to-square"></i> USE THIS TEMPLATE</a>
         </div>
 
         <div class="template_item">
             <img src="/images/templates/temp1.jpg" alt="">
-            <a href="">USE THIS TEMPLATE</a>
+            <a href="/editor/newvcard/<%=vid%>/edit/contact-information"><i class="fa-solid fa-pen-to-square"></i> USE THIS TEMPLATE</a>
         </div>
 
         <div class="template_item">
             <img src="/images/templates/temp1.jpg" alt="">
-            <a href="">USE THIS TEMPLATE</a>
+            <a href="/editor/newvcard/<%=vid%>/edit/contact-information"><i class="fa-solid fa-pen-to-square"></i> USE THIS TEMPLATE</a>
         </div>
 
         <div class="template_item">
             <img src="/images/templates/temp1.jpg" alt="">
-            <a href="">USE THIS TEMPLATE</a>
+            <a href="/editor/newvcard/<%=vid%>/edit/contact-information"><i class="fa-solid fa-pen-to-square"></i> USE THIS TEMPLATE</a>
         </div>
 
         <div class="template_item">
             <img src="/images/templates/temp1.jpg" alt="">
-            <a href="">USE THIS TEMPLATE</a>
+            <a href="/editor/newvcard/<%=vid%>/edit/contact-information"><i class="fa-solid fa-pen-to-square"></i> USE THIS TEMPLATE</a>
         </div>
         <div class="template_item">
             <img src="/images/templates/temp1.jpg" alt="">
-            <a href="">USE THIS TEMPLATE</a>
+            <a href="/editor/newvcard/<%=vid%>/edit/contact-information"><i class="fa-solid fa-pen-to-square"></i> USE THIS TEMPLATE</a>
         </div>
 
     </div>
@@ -77,6 +82,18 @@
     <div class="vcard_item"></div>
 </div> -->
 
+<script>
 
+    let dropDown = document.querySelector("#profile_drop_down");
+    let profileOptions = document.querySelector(".profileOptions");
+
+    dropDown.onclick = ()=>
+    {
+        profileOptions.style.display = profileOptions.style.display == "flex" ? "none" : "flex"; 
+    }
+    
+    this.document.title= "Template | vcardmakers";
+
+</script>
 
 <%- include("../partials/footer.ejs")%>

@@ -9,7 +9,7 @@ header
     border-bottom:1px solid lightgray;
 }
 
-header a
+header a.logo
 {
     width:20%;
     text-decoration: none;
@@ -37,8 +37,8 @@ header .profileContainer
     display:flex;
     align-items: center;
     justify-content: center;
-
-}
+    position:relative;
+}   
 
 
 header .profileContainer .profile
@@ -46,7 +46,7 @@ header .profileContainer .profile
     margin-right:10px;
     width:40px;
     height:40px;
-    background:lightgray;
+    background:rgba(0,0,0,.06);
     border-radius:50%;
 
 }
@@ -55,7 +55,40 @@ header .profileContainer .profile
 header .profileContainer i
 {
     font-size:1rem;
+    cursor:pointer;
+    padding:10px;
 }
+
+header .profileContainer .profileOptions
+{
+    padding:10px;
+    width:105%;
+    position:absolute;
+    bottom:-320%;
+    left:0;
+    right:0;
+    z-index:10;
+    box-shadow:0 0 5px lightgray;
+    display:flex;
+    justify-content: center;
+    align-items:flex-start;
+    flex-direction:column;
+    padding-left:20px;
+    transition:.2s ease;
+    overflow:hidden;
+    display:none;
+    background-color:white;
+
+}
+
+header .profileContainer .profileOptions a
+{
+    font-weight:200;
+    color:gray;
+    padding:10px 5px;
+    width:100%;
+}
+
 
 
 .vcardContainer
@@ -73,6 +106,7 @@ header .profileContainer i
 
 .vcardContainer .vcard_add
 {
+    
     width:250px;
     height:350px;
     border-radius:5px;
@@ -113,8 +147,50 @@ header .profileContainer i
     width:250px;
     height:350px;
     border-radius:5px;
-    background:green;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
 }
+
+.vcardContainer .vcard_item img
+{  
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.2s ease;
+}
+
+.vcardContainer .vcard_item:hover img
+{
+    opacity:.75;
+}
+
+
+.vcardContainer .vcard_item a
+{
+    position:relative;
+    z-index:2;
+    background:darkblue;
+    color:white;
+    border:none;
+    padding:8px 20px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:.9rem;
+    letter-spacing:1px;
+    display:none;
+}
+
+.vcardContainer .vcard_item:hover a
+{
+    display:block;
+}
+
 
 
 .newcard_status
@@ -197,16 +273,18 @@ header .profileContainer i
     align-items:center;
     flex-wrap:wrap;
     background:rgba(0,0,0,.04);
+    perspective:800px;
+    transfrom-style:preserve-3d
 }
 
 .vcard_hero_container .templates_container .template_item
 {
-    width:300px;
-    height:450px;
+    width:250px;
+    height:350px;
     display:flex;
     justify-content:center;
     align-items:center;
-    margin:20px 40px;
+    margin:30px 80px;
     border-radius:5px;
     box-shadow:0 0 5px gray;
     position:relative;
@@ -214,6 +292,10 @@ header .profileContainer i
 }
 
 
+.vcard_hero_container .templates_container .template_item:hover
+{
+    transform:translate3d(0,0,0,20deg)
+}
 
 .vcard_hero_container .templates_container .template_item img
 {
@@ -244,14 +326,111 @@ header .profileContainer i
 .vcard_hero_container .templates_container .template_item a
 {
     display:none;
-    background:green;
+    background:darkblue;
     color:white;
     border:none;
     padding:8px 20px;
     border-radius:50px;
     cursor:pointer;
-    font-size:.9rem;
+    font-size:.8rem;
     letter-spacing:1px;
 }
+
+
+.editvcardContainer
+{
+    width:100vw;
+    display:flex;
+    position:relative;
+}
+
+.editvcardContainer .editText
+{
+    width:60%;
+    height:89.8vh;
+    overflow-y:scroll;
+    padding:50px 70px;
+}
+
+.editvcardContainer .editText .introText
+{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex-direction:column;
+    padding:10px;
+}
+
+.editvcardContainer .editText .introText > *
+{
+    padding:0;
+}
+
+.editvcardContainer .editText .introText h2
+{
+    font-size:1.4rem;
+}
+
+
+.editvcardContainer .editText .introText p
+{
+    color:gray;
+    padding:10px 0;
+    font-size:.96rem;
+}
+
+.editvcardContainer .editPreview
+{
+    width:40%;
+    height:89.8vh;
+    position:sticky;
+    top:10px;
+    padding:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.editvcardContainer .editPreview .viewport
+{
+    width:100%;
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    border-bottom:1px solid lightgray;
+    padding-bottom:10px;
+}
+
+.editvcardContainer .editPreview .viewport i
+{
+    margin:0 30px;
+    color:lightgray;
+    cursor:pointer;
+    padding:10px;
+}
+
+.editvcardContainer .editPreview .viewport i:hover
+{
+    color:gray;
+}
+
+
+
+.editvcardContainer .editPreview .preview
+{
+    width:100%;
+    height:100%;
+    margin-top:20px;
+}
+
+.editvcardContainer .editPreview .preview img
+{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
 
 

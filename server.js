@@ -52,8 +52,14 @@ app.get("/loginUser",(req,res)=>
 
 app.get("/editor/newvcard/:hashId", verifyUser ,(req,res)=>
 {
-    res.render("dashboard/newvcard");
+    res.render("dashboard/newvcard",{vid : encodeURIComponent(req.params.hashId)});
 })
+
+app.get("/editor/newvcard/:hashId/edit/contact-information", verifyUser ,(req,res)=>
+{
+    res.render("dashboard/vcardcontactinfo");
+})
+
 
 
 
